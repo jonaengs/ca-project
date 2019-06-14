@@ -5,9 +5,9 @@ apt-get install -y python-pip python-dev build-essential
 
 COPY requirements.txt /usr/src/app/
 WORKDIR /usr/src/app
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
-RUN mkdir database && touch app.db && python create_db.py
+RUN mkdir database && touch app.db && python3 create_db.py
 
 EXPOSE 5000
 CMD ["python", "run.py"]
