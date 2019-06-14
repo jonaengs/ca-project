@@ -19,5 +19,11 @@ pipeline {
 		sh 'docker run mygiraff python /usr/src/app/tests.py'
 	   }
 	}
+	stage('Deploy') {
+		steps{
+			echo 'Deploy'
+			sh 'docker container run -p 80:5000 mygiraff python /usr/src/app/run.py'			
+		}
+	}
     }
 }
