@@ -3,7 +3,7 @@
 ## Docker commands
 
     docker build -t ca-project:latest .
-    docker run -d -p 80:5000 --rm -v db:/database/ ca-project:latest
+    docker run -d -p 80:5000 --rm -v db:/usr/src/app/database/ ca-project:latest
 
 This project is meant for you to make awesome software, with the skills in your Continuous Delivery and DevOps toolbox.
 Have fun, automate and be awesome!
