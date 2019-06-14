@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { docker { image 'python:3.5.1' } }
 
     stages {
         stage('greetings') {
@@ -10,19 +10,19 @@ pipeline {
 	stage('Preparation') {
 	    steps{
 		echo 'Preparation'
-		pip 'install -r requirements.txt'
+		sh 'pip install -r requirements.txt'
 	    }
 	}
 	stage('Build') {
 	    steps{
 		echo 'Build'
-		python '**/create_db.py'
+		sh 'python **/create_db.py'
 	    }
 	}
 	stage('Results') {
 	   steps{
 		echo 'Results'
-		python '**/tests.py'
+		sh 'python **/tests.py'
 	   }
 	}
     }
