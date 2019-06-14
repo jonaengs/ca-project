@@ -16,7 +16,7 @@ pipeline {
 	stage('Test') {
 	   steps{
 		echo 'Test'
-		sh 'docker run mygiraff python $(pwd)/tests.py'
+		sh 'docker run mygiraff python /usr/src/app/tests.py'
 	   }
 	}
     }
