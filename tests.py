@@ -47,5 +47,26 @@ class TestCase(unittest.TestCase):
         number_of_posts = len(Post.query.all())
         self.assertEqual(number_of_posts,1)
 
+    # Test that characters are limited to 140 or less
+    def test_too_big_post(self):
+        self.assertRaises(Post(title='test too long', 
+                    user_name='Chatty Charles',
+                    body='spamspamspamspamspamspamspamspamspamspamspamspamspamspamspam'\
+                         'spamspamspamspamspamspamspamspamspamspamspamspamspamspamspam'\
+                         'spamspamspamspamspamspamspamspamspamspamspamspamspamspamspam'\
+                         'spamspamspamspamspamspamspamspamspamspamspamspamspamspamspam',
+                    timestamp=datetime.utcnow()))
+        
+    def test_empty_post(self):
+        self.assertRaises(
+                Post(
+                    title='test empty input',
+                    body ='',
+                    user_name='Melvin the Mute',
+                    timestamp=datetime.utcnow()))
+
+
+
+
 if __name__ == '__main__':
     unittest.main()
