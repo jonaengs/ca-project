@@ -10,7 +10,7 @@ pipeline {
 	stage('Preparation') {
 	    steps{
 		echo 'Preparation'
-		sh 'pip install --user --upgrade pip'
+		# sh 'pip install --user --upgrade pip'
 		sh 'pip install --user -r requirements.txt'
 	    }
 	}
