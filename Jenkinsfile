@@ -10,19 +10,19 @@ pipeline {
 	stage('Preparation') {
 	    steps{
 		echo 'Preparation'
+		pip 'install -r requirements.txt'
 	    }
 	}
 	stage('Build') {
 	    steps{
 		echo 'Build'
-		sh './gradlew clean test jar'
+		python '**/create_db.py'
 	    }
 	}
 	stage('Results') {
 	   steps{
 		echo 'Results'
-		junit '**/build/test-results/test/TEST-*.xml'
-		archiveArtifacts artifacts: 'build/libs'
+		python '**/tests.py'
 	   }
 	}
     }
