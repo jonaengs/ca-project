@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3-alpine' } }
+    agent { docker { image 'mrydse/ca-python' } }
 
     stages {
 	stage('Preparation') {
