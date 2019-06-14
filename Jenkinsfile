@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'mrydse/ca-python' } }
+    agent any
 
     stages {
 	stage('Preparation') {
@@ -10,13 +10,13 @@ pipeline {
 	stage('Build') {
 	    steps{	
 		echo 'Build'
-		sh 'python **/create_db.py'
+		sh 'docker build -t mygiraff .'
 	    }
 	}
-	stage('Results') {
+	stage('Test') {
 	   steps{
-		echo 'Results'
-		sh 'python **/tests.py'
+		echo 'Test'
+		sh 'docker run mygiraff python /usr/src/app/tests.py'
 	   }
 	}
     }
