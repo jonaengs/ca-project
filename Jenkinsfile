@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent { docker { image 'python:3-alpine' } }
 
     stages {
         stage('greetings') {
@@ -10,8 +10,8 @@ pipeline {
 	stage('Preparation') {
 	    steps{
 		echo 'Preparation'
-		sh 'sudo pip install --upgrade pip'
-		sh 'sudo pip install -r requirements.txt'
+		sh 'pip install --user --upgrade pip'
+		sh 'pip install --user -r requirements.txt'
 	    }
 	}
 	stage('Build') {
