@@ -7,7 +7,7 @@ COPY requirements.txt /usr/src/app/
 WORKDIR /usr/src/app
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-RUN python create_db.py
+RUN mkdir database && touch app.db && python create_db.py
 
 EXPOSE 5000
 CMD ["python", "run.py"]
