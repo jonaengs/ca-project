@@ -1,0 +1,5 @@
+# Ignore database
+app.db
+
+# Ignore dev-files
+github_issue.py
